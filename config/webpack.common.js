@@ -1,4 +1,3 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { HotModuleReplacementPlugin } = require('webpack');
@@ -6,15 +5,6 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './src/index.js',
-  },
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    // publicPath: '/',
-    clean: true,
-  },
   module: {
     rules: [
       //Allows use javascript
@@ -54,7 +44,7 @@ module.exports = {
     new ESLintPlugin(),
     //Allows to create an index.html in our build folder
     new HtmlWebpackPlugin({
-      title: 'React App',
+      title: 'RA90',
       // template: path.resolve(__dirname, 'public/index.html'), //we put the file that we created in public folder
       // favicon: path.resolve(__dirname, 'public/favicon.ico'),
       template: './public/index.html', //we put the file that we created in public folder
