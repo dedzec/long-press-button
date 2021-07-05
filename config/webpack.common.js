@@ -44,7 +44,7 @@ module.exports = {
     new ESLintPlugin(),
     //Allows to create an index.html in our build folder
     new HtmlWebpackPlugin({
-      title: 'RA90',
+      title: 'long-press-button',
       // template: path.resolve(__dirname, 'public/index.html'), //we put the file that we created in public folder
       // favicon: path.resolve(__dirname, 'public/favicon.ico'),
       template: './public/index.html', //we put the file that we created in public folder

@@ -9,11 +9,12 @@
   "scripts": {
     "dev": "webpack serve --open --config config/webpack.dev.js --env env=dev",
     "build": "webpack --config config/webpack.prod.js --env env=prod",
-    "dev1": "webpack serve --open",
-    "build1": "webpack --mode production",
     "start": "npm run dev"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "*",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
