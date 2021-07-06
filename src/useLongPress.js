@@ -1,16 +1,17 @@
 const useLongPress = () => {
-  return (callback) => {
+  return (onClick, onLongPress) => {
     let timeout;
     let preventClick = false;
 
     const start = () => {
       timeout = setTimeout(() => {
         preventClick = true;
-        callback();
+        onLongPress();
       }, 500);
     };
 
     const clear = () => {
+      if (timeout) onClick();
       timeout && clearTimeout(timeout);
       preventClick = false;
     };
@@ -26,8 +27,6 @@ const useLongPress = () => {
       onMouseDown: start,
       onTouchStart: start,
       onMouseUp: clear,
-      onMouseLeave: clear,
-      onTouchMove: clear,
       onTouchEnd: clear,
       onClickCapture: clickCaptureHandler,
     };

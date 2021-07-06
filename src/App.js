@@ -14,11 +14,6 @@ const App = () => {
 
   const longPressProps = useLongPress();
 
-  const onClick = () => {
-    setDesc('click is triggered');
-    setOpen(true);
-  };
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -30,17 +25,24 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Button Long Press</p>
         <Button
           variant="contained"
           color="primary"
-          onClick={onClick}
-          {...longPressProps(() => {
-            setDesc('longpress is triggered');
-            setOpen(true);
-          })}
+          {...longPressProps(
+            () => {
+              const text = 'click is triggered';
+              console.log(text);
+              setDesc(text);
+              setOpen(true);
+            },
+            () => {
+              const text = 'longpress is triggered';
+              console.log(text);
+              setDesc(text);
+              setOpen(true);
+            }
+          )}
         >
           LongPress
         </Button>
@@ -50,7 +52,7 @@ const App = () => {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        autoHideDuration={6000}
+        autoHideDuration={3000}
         open={open}
         onClose={handleClose}
         message={desc}
