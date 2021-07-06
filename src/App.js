@@ -12,21 +12,12 @@ const App = () => {
   const [desc, setDesc] = useState('');
   const [open, setOpen] = useState(false);
 
-  const onLongPress = () => {
-    setDesc('longpress is triggered');
-    setOpen(true);
-  };
+  const longPressProps = useLongPress();
 
   const onClick = () => {
     setDesc('click is triggered');
     setOpen(true);
   };
-
-  const defaultOptions = {
-    shouldPreventDefault: true,
-    delay: 500,
-  };
-  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -42,7 +33,15 @@ const App = () => {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button variant="contained" color="primary" {...longPressEvent}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onClick}
+          {...longPressProps(() => {
+            setDesc('longpress is triggered');
+            setOpen(true);
+          })}
+        >
           LongPress
         </Button>
       </header>
